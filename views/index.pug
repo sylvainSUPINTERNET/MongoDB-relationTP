@@ -1,6 +1,8 @@
 extend _master
 
 block content
+    <p>#{nom}</p>
+
     <h1>Liste des commandes</h1>
     <hr>
     <p>Vous êtes ici : <a href="/" title="Retour à la liste des commandes">Liste des commandes</a></p>
@@ -16,6 +18,21 @@ block content
             </tr>
         </thead>
         <tbody>
-            // ...
+            each order in orders
+                <tr>
+                    <td width="25%">
+                            #{order._id}
+                    </td>
+                    <td width="25%">
+                            #{order.dateOrdered}
+                    </td>
+                    <td width="25%">
+                            #{order.custommer.firstname} #{order.custommer.lastname}
+                    </td>
+                    <td width="25%">
+                            #{order.products.length}
+                    </td>
+                </tr>
         </tbody>
     </table>
+
