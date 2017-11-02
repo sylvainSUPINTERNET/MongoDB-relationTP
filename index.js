@@ -58,7 +58,7 @@ app.get('/', function(req,res){
         Customer.findById(customerId)
             .exec()
             .then(customer =>
-                res.json(customer)
+                res.render('customer', {customer:customer})
 
             )
     });
