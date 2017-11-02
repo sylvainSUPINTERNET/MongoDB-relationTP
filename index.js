@@ -51,6 +51,18 @@ app.get('/', function(req,res){
             )
     });
 
+    app.get('/customer/:customerId', function(req,res){
+
+        let customerId = req.params.customerId;
+
+        Customer.findById(customerId)
+            .exec()
+            .then(customer =>
+                res.json(customer)
+
+            )
+    });
+
 
 	mongoose.Promise = global.Promise;
     mongoose
