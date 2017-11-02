@@ -19,7 +19,7 @@ const orderSchema = new mongoose.Schema({
        default: Date.now,
        required: true
    },
-    custommer: {
+    customer: {
        type: ObjectId,
         ref: 'Customer',
         required:true

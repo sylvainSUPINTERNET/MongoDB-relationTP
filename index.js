@@ -18,9 +18,15 @@ const app = express();
     const Product = require('./models/Product.model');
 
 
+    //dans PUG
+    // mettre des | sur une retour à la ligne sinon la variable est interprété en tant que balise HTML
+
 app.get('/', function(req,res){
 
-        Order.find().exec().then(function(orders){
+    //.populate va faire chercher dans la collection Ref (customer) les _id object du champs passer dans populate donc customer et products
+
+        //.populate('nom du champs de otre model')
+        Order.find().populate('customer products').exec().then(function(orders){
             res.render(
                 'index', {orders: orders}
             )
@@ -31,6 +37,19 @@ app.get('/', function(req,res){
         })
 
 });
+
+
+    app.get('/order/:orderId', function(req,res){
+
+        let orderId = req.params.orderId;
+
+        Order.findById(orderId).populate('customer products')
+            .exec()
+            .then(order =>
+            res.render('order', { order : order })
+
+            )
+    });
 
 
 	mongoose.Promise = global.Promise;

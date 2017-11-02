@@ -21,16 +21,18 @@ block content
             each order in orders
                 <tr>
                     <td width="25%">
-                            #{order._id}
+                        <a href="/order/#{order._id}">
+                            | #{order._id}
+                        </a>
                     </td>
                     <td width="25%">
-                            #{order.dateOrdered}
+                            | #{order.dateOrdered}
                     </td>
                     <td width="25%">
-                            #{order.custommer.firstname} #{order.custommer.lastname}
+                            | #{order.customer.firstname} #{order.customer.lastname}
                     </td>
                     <td width="25%">
-                            #{order.products.length}
+                            | #{order.products.length}
                     </td>
                 </tr>
         </tbody>
